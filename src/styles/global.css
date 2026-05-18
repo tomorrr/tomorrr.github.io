@@ -23,3 +23,13 @@ body {
 }
 
 @import "./glass.css";
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .prose h2 {
+    font-size: 1.25rem;
+  }
+  .prose h3 {
+    font-size: 1.05rem;
+  }
+}
