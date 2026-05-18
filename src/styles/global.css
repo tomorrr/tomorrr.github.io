@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-glass-bg: rgba(255, 255, 255, 0.04);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-hover: rgba(255, 255, 255, 0.08);
+  --color-aurora-100: #e0f2fe;
+  --color-aurora-200: #bae6fd;
+  --color-aurora-300: #7dd3fc;
+  --color-aurora-400: #60a5fa;
+  --color-aurora-500: #93c5fd;
+  --color-bg-start: #0f172a;
+  --color-bg-end: #1e293b;
+  --color-text-primary: #f0f9ff;
+  --color-text-body: #cbd5e1;
+  --color-text-muted: #94a3b8;
+}
+
+body {
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+  color: var(--color-text-body);
+  min-height: 100vh;
+}
