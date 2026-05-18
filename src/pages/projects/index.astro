@@ -1,20 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import ProjectFilter from "../../components/ProjectFilter";
 
 const projects = (await getCollection("projects"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
+
+const projectData = projects.map((p) => ({ slug: p.slug, data: p.data }));
 ---
 
 <BaseLayout title="项目" description="我的项目和作品">
   <h1 class="text-3xl font-bold text-text-primary mb-2">我的项目</h1>
   <p class="text-text-muted mb-8">一些自己动手做的东西</p>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {projects.map((p) => (
-      <ProjectCard project={p} />
-    ))}
-  </div>
+  <ProjectFilter projects={projectData} client:load />
 </BaseLayout>

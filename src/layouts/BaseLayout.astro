@@ -1,6 +1,8 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import Search from "../components/Search";
+import { getCollection } from "astro:content";
 import "../styles/global.css";
 
 export interface Props {
@@ -9,6 +11,10 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
+const allPosts = await getCollection("posts");
+const postsData = allPosts
+  .filter((p) => !p.data.draft)
+  .map((p) => ({ slug: p.slug, data: p.data }));
 ---
 
 <!doctype html>
@@ -20,14 +26,16 @@ const { title, description } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="min-h-screen font-sans antialiased">
-    <!-- Background glow orbs -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
       <div class="glow-dot w-96 h-96 bg-aurora-400/10 -top-48 -right-48"></div>
       <div class="glow-dot w-64 h-64 bg-aurora-400/8 bottom-0 left-1/4"></div>
     </div>
 
     <div class="max-w-3xl mx-auto px-6 py-4">
-      <Nav />
+      <div class="flex items-center justify-between gap-4 mb-8">
+        <Nav />
+        <Search posts={postsData} client:load />
+      </div>
       <main>
         <slot />
       </main>
