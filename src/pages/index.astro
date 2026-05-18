@@ -1,7 +1,40 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { getPublishedPosts } from "../utils/posts";
+
+const posts = await getPublishedPosts();
 ---
 
 <BaseLayout title="My Blog" description="个人博客 — 记录思考与创造">
-  <h1 class="text-4xl font-bold text-text-primary">Hello World</h1>
+  <!-- Hero -->
+  <section class="text-center mb-16 pt-8">
+    <div class="w-20 h-20 rounded-full mx-auto mb-5 bg-aurora-400/10 border-2 border-aurora-400/20 flex items-center justify-center">
+      <span class="text-3xl">👋</span>
+    </div>
+    <h1 class="text-4xl font-bold text-text-primary mb-3">
+      Hi, 我是 <span class="text-gradient">[你的名字]</span>
+    </h1>
+    <p class="text-text-muted max-w-md mx-auto leading-relaxed">
+      前端开发者 / 写点东西 / 做些项目<br />
+      这里记录我的想法、成长和创造。
+    </p>
+  </section>
+
+  <!-- Post list -->
+  <section>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-xl font-bold text-text-primary">最新文章</h2>
+      {posts.length > 5 && (
+        <a href="/archive" class="text-aurora-300 text-sm hover:text-aurora-200 transition-colors">
+          查看全部 &rarr;
+        </a>
+      )}
+    </div>
+    <div class="flex flex-col gap-4">
+      {posts.slice(0, 5).map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDate, readingTime } from "../utils/posts";
+
+const { post } = Astro.props as { post: CollectionEntry<"posts"> };
+const { title, date, category, tags } = post.data;
+const body = post.body || "";
+const minutes = readingTime(body);
+---
+
+<a
+  href={`/posts/${post.slug}`}
+  class="glass-card block p-5 no-underline group"
+>
+  <div class="flex items-center gap-2 text-xs text-aurora-300 mb-2">
+    <time datetime={formatDate(date)}>{formatDate(date)}</time>
+    <span class="text-text-muted">·</span>
+    <span>{category}</span>
+    <span class="text-text-muted">·</span>
+    <span>{minutes} 分钟阅读</span>
+  </div>
+  <h3 class="text-text-primary font-bold text-lg mb-2 group-hover:text-aurora-200 transition-colors">
+    {title}
+  </h3>
+  <p class="text-text-muted text-sm line-clamp-2">{post.data.description}</p>
+</a>
