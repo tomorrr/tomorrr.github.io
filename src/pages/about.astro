@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="关于我" description="关于我和这个博客">
+  <div class="max-w-prose mx-auto text-center">
+    <div class="w-24 h-24 rounded-full mx-auto mb-6 bg-aurora-400/10 border-2 border-aurora-400/20" />
+
+    <h1 class="text-3xl font-bold text-text-primary mb-2">关于我</h1>
+    <p class="text-text-muted mb-8">Developer / Writer / Creator</p>
+
+    <div class="glass p-6 text-left mb-8">
+      <p class="text-text-body leading-relaxed">
+        你好，我是一名开发者。<br /><br />
+        这里记录我的学习过程、项目成果和一些随想。<br /><br />
+        相信技术可以让世界更好一点。
+      </p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mb-8">
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-aurora-300">0</div>
+        <div class="text-xs text-text-muted mt-1">篇文章</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-aurora-300">0</div>
+        <div class="text-xs text-text-muted mt-1">个项目</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-aurora-300">∞</div>
+        <div class="text-xs text-text-muted mt-1">热爱</div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const friends = [
+  { name: "友链待添加", url: "#", description: "你的好友链接将出现在这里" },
+];
+---
+
+<BaseLayout title="友链" description="朋友们">
+  <h1 class="text-3xl font-bold text-text-primary mb-2">友链</h1>
+  <p class="text-text-muted mb-8">一些值得关注的朋友和博客</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {friends.map((f) => (
+      <a href={f.url} class="glass-card block p-5 no-underline">
+        <h3 class="text-text-primary font-bold text-sm">{f.name}</h3>
+        <p class="text-text-muted text-xs mt-1">{f.description}</p>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
