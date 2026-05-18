@@ -32,8 +32,8 @@ const postsData = allPosts
     </div>
 
     <div class="max-w-3xl mx-auto px-6 py-4">
-      <div class="flex items-center justify-between gap-4 mb-8">
-        <Nav />
+      <Nav />
+      <div class="mb-8">
         <Search posts={postsData} client:load />
       </div>
       <main>
