@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects
+    .filter((p) => !p.data.draft)
+    .map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const projects = await getCollection("projects");
+const project = projects.find((p) => p.slug === slug);
+
+if (!project) {
+  return Astro.rewrite("/404");
+}
+
+const { Content } = await project.render();
+const { title, description, tags, url } = project.data;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-prose mx-auto">
+    <a href="/projects" class="text-aurora-300 text-sm hover:text-aurora-200 transition-colors mb-6 inline-block">
+      &larr; 返回项目列表
+    </a>
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-text-primary mb-3">{title}</h1>
+      <p class="text-text-muted mb-4">{description}</p>
+      <div class="flex gap-2 flex-wrap mb-4">
+        {tags.map((tag: string) => (
+          <span class="bg-aurora-400/10 text-aurora-300 px-3 py-1 rounded-full text-xs border border-aurora-400/15">
+            {tag}
+          </span>
+        ))}
+      </div>
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-aurora-300 text-sm hover:text-aurora-200 transition-colors underline underline-offset-2"
+        >
+          查看项目 &rarr;
+        </a>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

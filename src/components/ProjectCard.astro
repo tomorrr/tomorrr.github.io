@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { project } = Astro.props as { project: CollectionEntry<"projects"> };
+const { title, description, tags } = project.data;
+---
+
+<a
+  href={`/projects/${project.slug}`}
+  class="glass-card block overflow-hidden no-underline group"
+>
+  <!-- Cover -->
+  <div class="h-28 bg-gradient-to-br from-aurora-400/10 to-aurora-400/5"></div>
+  <!-- Body -->
+  <div class="p-4">
+    <h3 class="text-text-primary font-bold text-sm mb-1 group-hover:text-aurora-200 transition-colors">
+      {title}
+    </h3>
+    <p class="text-text-muted text-xs leading-relaxed mb-3">{description}</p>
+    <div class="flex gap-1.5 flex-wrap">
+      {tags.map((tag: string) => (
+        <span class="bg-aurora-400/8 text-aurora-300 px-2 py-0.5 rounded-full text-[10px] border border-aurora-400/10">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>
