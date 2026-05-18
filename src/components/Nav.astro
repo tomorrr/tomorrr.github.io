@@ -1,0 +1,30 @@
+---
+const navItems = [
+  { href: "/", label: "文章" },
+  { href: "/projects", label: "项目" },
+  { href: "/archive", label: "归档" },
+  { href: "/friends", label: "友链" },
+  { href: "/about", label: "关于" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="flex items-center justify-between py-4 mb-12">
+  <a href="/" class="text-white font-bold text-lg tracking-tight">
+    <span class="text-gradient">BLOG</span>
+  </a>
+  <div class="flex gap-6 text-sm">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class={
+          currentPath === item.href
+            ? "text-aurora-200 font-medium"
+            : "text-text-muted hover:text-aurora-200 transition-colors"
+        }
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+</nav>
