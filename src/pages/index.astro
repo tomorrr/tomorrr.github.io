@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
+import StarField from "../components/StarField";
 import { getPublishedPosts } from "../utils/posts";
 
 const posts = await getPublishedPosts();
 ---
 
 <BaseLayout title="My Blog" description="个人博客 — 记录思考与创造">
+  <StarField client:load />
   <!-- Hero -->
   <section class="text-center mb-16 pt-8">
     <div class="w-20 h-20 rounded-full mx-auto mb-5 bg-aurora-400/10 border-2 border-aurora-400/20 flex items-center justify-center">
