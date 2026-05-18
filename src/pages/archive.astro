@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Timeline from "../components/Timeline";
+import { getPublishedPosts } from "../utils/posts";
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout title="归档" description="文章归档时间线">
+  <h1 class="text-3xl font-bold text-text-primary mb-2">归档</h1>
+  <p class="text-text-muted mb-8">共 {posts.length} 篇文章</p>
+
+  <Timeline
+    posts={posts.map((p) => ({ slug: p.slug, data: p.data }))}
+    client:load
+  />
+</BaseLayout>
