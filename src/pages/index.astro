@@ -11,39 +11,27 @@ const posts = await getPublishedPosts();
   <StarField client:load />
 
   <!-- Hero -->
-  <section class="mb-20 pt-12">
-    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
-      <!-- Avatar + intro -->
-      <div class="flex flex-col items-center lg:items-start text-center lg:text-left flex-shrink-0">
-        <div class="w-28 h-28 rounded-full mb-6 bg-aurora-400/10 border-2 border-aurora-400/20 flex items-center justify-center">
-          <span class="text-4xl">👋</span>
-        </div>
-        <h1 class="text-5xl font-bold text-text-primary mb-3 leading-tight">
-          Hi, 我是<br/><span class="text-gradient">[你的名字]</span>
-        </h1>
-        <p class="text-text-muted text-lg leading-relaxed max-w-sm">
-          前端开发者 / 写点东西 / 做些项目
-        </p>
-      </div>
-
-      <!-- Bio card -->
-      <div class="glass p-6 flex-1 max-w-lg lg:mt-10">
-        <p class="text-text-body leading-relaxed">
-          这里记录我的想法、成长和创造。喜欢探索新技术，
-          沉迷于把想法变成可用的产品。
-          相信技术可以让世界更好一点。
-        </p>
-        <div class="flex gap-4 mt-4 pt-4 border-t border-white/5">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-aurora-300">{posts.length}</div>
-            <div class="text-xs text-text-muted">篇文章</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-aurora-300">∞</div>
-            <div class="text-xs text-text-muted">热爱</div>
-          </div>
-        </div>
-      </div>
+  <section class="text-center mb-20 pt-8">
+    <div class="w-24 h-24 rounded-full mx-auto mb-6 bg-aurora-400/10 border-2 border-aurora-400/20 flex items-center justify-center">
+      <span class="text-4xl">👋</span>
+    </div>
+    <h1 class="text-5xl font-bold text-text-primary mb-4">
+      Hi, 我是 <span class="text-gradient">[你的名字]</span>
+    </h1>
+    <p class="text-text-muted text-lg max-w-md mx-auto mb-6">
+      前端开发者 / 写点东西 / 做些项目
+    </p>
+    <div class="flex justify-center gap-8 text-sm">
+      <span class="text-aurora-300">
+        <span class="text-2xl font-bold">{posts.length}</span>
+        <span class="text-text-muted ml-1">篇文章</span>
+      </span>
+      <span class="text-text-muted">·</span>
+      <a href="/projects" class="text-aurora-300 hover:text-aurora-200 transition-colors">项目</a>
+      <span class="text-text-muted">·</span>
+      <a href="/about" class="text-aurora-300 hover:text-aurora-200 transition-colors">关于</a>
+      <span class="text-text-muted">·</span>
+      <a href="/rss.xml" class="text-aurora-300 hover:text-aurora-200 transition-colors">RSS</a>
     </div>
   </section>
 
