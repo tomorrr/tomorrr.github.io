@@ -11,39 +11,17 @@ const posts = await getPublishedPosts();
   <StarField client:load />
 
   <!-- Hero -->
-  <section class="mb-20 pt-8">
-    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-      <!-- Left: Avatar + name -->
-      <div class="flex-shrink-0 text-center lg:text-left">
-        <div class="w-28 h-28 rounded-full mx-auto lg:mx-0 mb-5 bg-aurora-400/10 border-2 border-aurora-400/20 flex items-center justify-center">
-          <span class="text-4xl">👋</span>
-        </div>
-        <h1 class="text-5xl font-bold text-text-primary mb-2">
-          <span class="text-gradient">Linn</span>
-        </h1>
-        <p class="text-text-muted text-lg">
-          开发者 · 写作者 · 创造者
-        </p>
-      </div>
-
-      <!-- Right: Intro card -->
-      <div class="flex-1 glass p-6 lg:p-8 max-w-2xl">
-        <p class="text-text-body text-base leading-relaxed mb-4">
-          嘿，欢迎来到我的数字花园。我在这里记录技术探索、项目心得和偶尔的胡思乱想。我相信分享是学习的最好方式，也希望这些内容能对你有所启发。
-        </p>
-        <div class="flex items-center gap-6 text-sm pt-3 border-t border-white/5">
-          <a href="/posts/hello-world" class="text-aurora-300 hover:text-aurora-200 transition-colors">
-            最近文章 &rarr;
-          </a>
-          <a href="/projects" class="text-aurora-300 hover:text-aurora-200 transition-colors">
-            我的项目 &rarr;
-          </a>
-          <a href="/about" class="text-aurora-300 hover:text-aurora-200 transition-colors">
-            了解更多 &rarr;
-          </a>
-        </div>
-      </div>
+  <section class="text-center mb-20 pt-8">
+    <div class="w-28 h-28 rounded-full mx-auto mb-6 bg-aurora-400/10 border-2 border-aurora-400/20 flex items-center justify-center">
+      <span class="text-4xl">👋</span>
     </div>
+    <h1 class="text-5xl font-bold text-text-primary mb-4">
+      <span class="text-gradient">Linn</span>
+    </h1>
+    <p class="text-text-muted text-lg max-w-lg mx-auto leading-relaxed">
+      开发者 · 写作者 · 创造者<br/>
+      在这里记录技术探索、项目心得和偶尔的胡思乱想。
+    </p>
   </section>
 
   <!-- Post list -->
