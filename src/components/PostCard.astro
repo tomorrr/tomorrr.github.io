@@ -10,17 +10,28 @@ const minutes = readingTime(body);
 
 <a
   href={`/posts/${post.slug}`}
-  class="glass-card block p-5 no-underline group"
+  class="glass-card flex flex-col h-full no-underline group"
 >
-  <div class="flex items-center gap-2 text-xs text-aurora-300 mb-2">
-    <time datetime={formatDate(date)}>{formatDate(date)}</time>
-    <span class="text-text-muted">·</span>
-    <span>{category}</span>
-    <span class="text-text-muted">·</span>
-    <span>{minutes} 分钟阅读</span>
+  <div class="p-5 flex flex-col flex-1">
+    <div class="flex items-center gap-2 text-xs text-aurora-300 mb-3">
+      <time datetime={formatDate(date)}>{formatDate(date)}</time>
+      <span class="text-text-muted">·</span>
+      <span>{category}</span>
+      <span class="text-text-muted">·</span>
+      <span>{minutes} 分钟阅读</span>
+    </div>
+    <h3 class="text-text-primary font-bold text-base mb-3 group-hover:text-aurora-200 transition-colors leading-snug flex-1">
+      {title}
+    </h3>
+    <p class="text-text-muted text-sm line-clamp-2 leading-relaxed mb-3">{post.data.description}</p>
+    {tags.length > 0 && (
+      <div class="flex gap-1.5 flex-wrap mt-auto">
+        {tags.slice(0, 3).map((tag: string) => (
+          <span class="bg-aurora-400/10 text-aurora-300 px-2 py-0.5 rounded-full text-[10px]">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
   </div>
-  <h3 class="text-text-primary font-bold text-lg mb-2 group-hover:text-aurora-200 transition-colors">
-    {title}
-  </h3>
-  <p class="text-text-muted text-sm line-clamp-2">{post.data.description}</p>
 </a>

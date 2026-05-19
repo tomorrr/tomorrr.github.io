@@ -3,32 +3,59 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="关于我" description="关于我和这个博客">
-  <div class="max-w-prose mx-auto text-center">
-    <div class="w-24 h-24 rounded-full mx-auto mb-6 bg-aurora-400/10 border-2 border-aurora-400/20" />
+  <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+    <!-- Left: Avatar + stats -->
+    <div class="flex-shrink-0 text-center lg:text-left">
+      <div class="w-28 h-28 rounded-full mb-6 mx-auto lg:mx-0 bg-aurora-400/10 border-2 border-aurora-400/20" />
+      <h1 class="text-4xl font-bold text-text-primary mb-2">关于我</h1>
+      <p class="text-text-muted mb-6">Developer / Writer / Creator</p>
 
-    <h1 class="text-3xl font-bold text-text-primary mb-2">关于我</h1>
-    <p class="text-text-muted mb-8">Developer / Writer / Creator</p>
-
-    <div class="glass p-6 text-left mb-8">
-      <p class="text-text-body leading-relaxed">
-        你好，我是一名开发者。<br /><br />
-        这里记录我的学习过程、项目成果和一些随想。<br /><br />
-        相信技术可以让世界更好一点。
-      </p>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="glass p-3 text-center">
+          <div class="text-xl font-bold text-aurora-300">0</div>
+          <div class="text-[10px] text-text-muted mt-0.5">篇文章</div>
+        </div>
+        <div class="glass p-3 text-center">
+          <div class="text-xl font-bold text-aurora-300">0</div>
+          <div class="text-[10px] text-text-muted mt-0.5">个项目</div>
+        </div>
+        <div class="glass p-3 text-center">
+          <div class="text-xl font-bold text-aurora-300">∞</div>
+          <div class="text-[10px] text-text-muted mt-0.5">热爱</div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-3 gap-4 mb-8">
-      <div class="glass p-4 text-center">
-        <div class="text-2xl font-bold text-aurora-300">0</div>
-        <div class="text-xs text-text-muted mt-1">篇文章</div>
+    <!-- Right: Bio + details -->
+    <div class="flex-1 space-y-4">
+      <div class="glass p-6">
+        <h2 class="text-lg font-bold text-text-primary mb-3">简介</h2>
+        <p class="text-text-body leading-relaxed">
+          你好，我是一名开发者。<br />
+          这里记录我的学习过程、项目成果和一些随想。<br />
+          相信技术可以让世界更好一点。
+        </p>
       </div>
-      <div class="glass p-4 text-center">
-        <div class="text-2xl font-bold text-aurora-300">0</div>
-        <div class="text-xs text-text-muted mt-1">个项目</div>
-      </div>
-      <div class="glass p-4 text-center">
-        <div class="text-2xl font-bold text-aurora-300">∞</div>
-        <div class="text-xs text-text-muted mt-1">热爱</div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="glass p-5">
+          <h3 class="text-sm font-bold text-text-primary mb-2">技能</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="bg-aurora-400/10 text-aurora-300 px-2.5 py-1 rounded-full text-xs">React</span>
+            <span class="bg-aurora-400/10 text-aurora-300 px-2.5 py-1 rounded-full text-xs">TypeScript</span>
+            <span class="bg-aurora-400/10 text-aurora-300 px-2.5 py-1 rounded-full text-xs">Node.js</span>
+            <span class="bg-aurora-400/10 text-aurora-300 px-2.5 py-1 rounded-full text-xs">Tailwind</span>
+            <span class="bg-aurora-400/10 text-aurora-300 px-2.5 py-1 rounded-full text-xs">Astro</span>
+          </div>
+        </div>
+        <div class="glass p-5">
+          <h3 class="text-sm font-bold text-text-primary mb-2">联系</h3>
+          <div class="space-y-2 text-sm">
+            <a href="https://github.com" class="block text-aurora-300 hover:text-aurora-200 transition-colors">GitHub →</a>
+            <a href="mailto:you@example.com" class="block text-aurora-300 hover:text-aurora-200 transition-colors">Email →</a>
+            <a href="/rss.xml" class="block text-aurora-300 hover:text-aurora-200 transition-colors">RSS →</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
