@@ -9,53 +9,55 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="flex items-center justify-between py-4">
-  <a href="/" class="text-white font-bold text-lg tracking-tight">
-    <span class="text-gradient">BLOG</span>
-  </a>
+<div>
+  <div class="flex items-center justify-between">
+    <a href="/" class="text-white font-bold text-lg tracking-tight">
+      <span class="text-gradient">BLOG</span>
+    </a>
 
-  <!-- Desktop nav -->
-  <div class="hidden sm:flex gap-6 text-sm">
+    <!-- Desktop nav -->
+    <div class="hidden sm:flex gap-6 text-sm">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={
+            currentPath === item.href
+              ? "text-aurora-200 font-medium"
+              : "text-text-muted hover:text-aurora-200 transition-colors"
+          }
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="sm:hidden text-text-muted hover:text-aurora-200 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="sm:hidden hidden flex-col gap-2 pt-2">
     {navItems.map((item) => (
       <a
         href={item.href}
         class={
           currentPath === item.href
-            ? "text-aurora-200 font-medium"
-            : "text-text-muted hover:text-aurora-200 transition-colors"
+            ? "text-aurora-200 font-medium text-sm py-2"
+            : "text-text-muted hover:text-aurora-200 transition-colors text-sm py-2"
         }
       >
         {item.label}
       </a>
     ))}
   </div>
-
-  <!-- Mobile menu button -->
-  <button
-    id="mobile-menu-btn"
-    class="sm:hidden text-text-muted hover:text-aurora-200 transition-colors"
-    aria-label="Toggle menu"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M3 12h18M3 6h18M3 18h18" />
-    </svg>
-  </button>
-</nav>
-
-<!-- Mobile dropdown -->
-<div id="mobile-menu" class="sm:hidden hidden flex-col gap-2 pb-4">
-  {navItems.map((item) => (
-    <a
-      href={item.href}
-      class={
-        currentPath === item.href
-          ? "text-aurora-200 font-medium text-sm py-2"
-          : "text-text-muted hover:text-aurora-200 transition-colors text-sm py-2"
-      }
-    >
-      {item.label}
-    </a>
-  ))}
 </div>
 
 <script>
